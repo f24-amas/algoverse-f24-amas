@@ -4,7 +4,7 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 class MemoryAugmentedNetwork(torch.nn.Module):
     def __init__(self, model_name, device):
         super().__init__()
-        self.base_model = AutoModelForSequenceClassification.from_pretrained(model_name).to(device)  # Move model to the device
+        self.base_model = AutoModelForSequenceClassification.from_pretrained(model_name).to(device)
         self.device = device
         self.memory = {}
 
@@ -25,7 +25,7 @@ class MemoryAugmentedNetwork(torch.nn.Module):
         tokenizer = AutoTokenizer.from_pretrained("gpt-4o-2024")
         inputs = tokenizer(combined_input, return_tensors="pt", truncation=True, padding=True)
         
-        # Move inputs to the correct device (same device as the model)
+        # Move inputs to the correct device
         inputs = {key: value.to(self.device) for key, value in inputs.items()}
         
         # Forward pass
