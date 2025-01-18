@@ -2,7 +2,6 @@ import os
 from openai import OpenAI
 import json
 import re
-os.environ["OPENAI_API_KEY"] = "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"
 
 
 # Define the OpenAI API function
